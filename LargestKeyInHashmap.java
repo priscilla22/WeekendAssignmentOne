@@ -12,23 +12,6 @@ import java.util.Scanner;
  *
  */
 
-class UserMainCodeTwenty {
-	public static String getMaxKeyValue(HashMap<Integer,String> map){
-		int highestKey = 0;
-		String highestKeyValue = "";
-		Iterator iter = map.entrySet().iterator();
-	    while (iter.hasNext()) {
-	        Map.Entry pair = (Map.Entry)iter.next();
-	        int key = (int)pair.getKey();
-	        if(key>highestKey){
-	        	highestKey = key;
-	        	highestKeyValue = (String)pair.getValue();
-	        }
-	    }
-		return highestKeyValue;
-	}
-	
-}
 public class LargestKeyInHashmap {
 
 	/**
@@ -37,8 +20,10 @@ public class LargestKeyInHashmap {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
+		System.out.print("Enter the number of pairs in the map : ");
 		int n = sc.nextInt();
 		
+		System.out.println("Enter the integer key and string value pairs");
 		HashMap<Integer,String> map = new HashMap<>();
 		for(int i=0;i<n;i++){
 			int key = sc.nextInt();
@@ -46,7 +31,7 @@ public class LargestKeyInHashmap {
 			map.put(key, value);	
 		}
 		
-		String highestValue = UserMainCodeTwenty.getMaxKeyValue(map);
+		String highestValue = UserMainCode.getMaxKeyValue(map);
 		System.out.println(highestValue);
 
 	}

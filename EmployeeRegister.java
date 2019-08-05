@@ -12,41 +12,7 @@ import java.util.Scanner;
  *
  */
 
-class Employee{
-	private String firstname, lastname, phoneNumber, emailID;
-	
 
-	public Employee(String firstname, String lastname, String phoneNumber, String emailID) {
-		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.phoneNumber = phoneNumber;
-		this.emailID = emailID;
-	}
-
-
-	public String getFirstname() {
-		return firstname;
-	}
-
-
-	public String getLastname() {
-		return lastname;
-	}
-
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-
-	public String getEmailID() {
-		return emailID;
-	}
-
-
-	
-}
 public class EmployeeRegister {
 
 	/**
@@ -55,12 +21,12 @@ public class EmployeeRegister {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("Enter the number of employees");
+		System.out.print("Enter the number of employees : ");
 		int n = sc.nextInt();
 		
 		ArrayList<Employee> employeeList = new ArrayList<>();
 		for(int i=0;i<n;i++){
-			System.out.println("EMPLOYEE " + i + " DETAILS : ");
+			System.out.println("EMPLOYEE " + (i+1) + " DETAILS : ");
 			System.out.print("First name : ");
 			String firstName = sc.next();
 			System.out.print("Last Name : ");

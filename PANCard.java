@@ -9,13 +9,6 @@ import java.util.Scanner;
  *
  */
 import java.util.regex.Pattern;
-class UserMainCodeEighteen {
-	public static boolean validatePAN(String pan){
-		String pattern = "^([A-Z]{4})([0-9]{3})[A-Z]$";
-		return Pattern.matches(pattern, pan);
-		
-	}
-}
 public class PANCard {
 
 	/**
@@ -24,9 +17,10 @@ public class PANCard {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
+		System.out.println("Enter the PAN Number : (AAAA111A)");
 		String pan = sc.nextLine();
 		
-		boolean valid = UserMainCodeEighteen.validatePAN(pan);
+		boolean valid = UserMainCode.validatePAN(pan);
 		
 		if(valid)
 			System.out.println("Valid");

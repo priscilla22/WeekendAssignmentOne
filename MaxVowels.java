@@ -20,7 +20,7 @@ public class MaxVowels {
 		
 		System.out.println("Enter the sentence");
 		String sentence = sc.nextLine();
-		String maxVowelString = UserMainCodeTwelve.getWordWithMaximumVowels(sentence);
+		String maxVowelString = UserMainCode.getWordWithMaximumVowels(sentence);
 		System.out.println(maxVowelString);
 		
 

@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Pattern;
 
 public class UserMainCode {
 	
@@ -369,15 +370,155 @@ public static String findOldDate(String dateOne, String dateTwo){
 
 	//17. MaximumDifference
 	public static int findMaxDifference(int array[]){
-	int maxDifference = 0;
-	int index = 0;
-	for(int i=0;i<array.length-1;i++){
-		int difference = Math.abs(array[i]-array[i+1]);
-		if(difference > maxDifference){
-			maxDifference = difference;
-			index = i+1;
+		int maxDifference = 0;
+		int index = 0;
+		for(int i=0;i<array.length-1;i++){
+			int difference = Math.abs(array[i]-array[i+1]);
+			if(difference > maxDifference){
+				maxDifference = difference;
+				index = i+1;
+			}
 		}
+		return index;
 	}
-	return index;
+	
+	//18. PANCard
+	public static boolean validatePAN(String pan){
+		String pattern = "^([A-Z]{4})([0-9]{3})[A-Z]$";
+		return Pattern.matches(pattern, pan);
+		
+	}
+	
+	//19. LastLetters
+	public static String getLastLetter(String string){
+		String finalString = "";
+		
+		String words[] = string.split(" "); //Splitting the sentence into words
+		for(int i=0;i<words.length;i++){
+			char c = words[i].charAt(words[i].length()-1);
+			finalString += Character.toUpperCase(c); 
+			if(i!=words.length-1)
+				finalString += "$";
+		}
+		return finalString;
+	}
+	
+	//20. LargetsKeyInHashmap
+	public static String getMaxKeyValue(HashMap<Integer,String> map){
+		
+		int highestKey = 0;
+		String highestKeyValue = "";
+		Iterator iter = map.entrySet().iterator();
+	    while (iter.hasNext()) {
+	        Map.Entry pair = (Map.Entry)iter.next();
+	        int key = (int)pair.getKey();
+	        if(key>highestKey){
+	        	highestKey = key;
+	        	highestKeyValue = (String)pair.getValue();
+	        }
+	    }
+		return highestKeyValue;
+	}
+	
+	//21. DayOfTheWeek
+	public static String getDay(String d){
+		String day = "";
+		String dateArray[] = d.split("-");
+		int date = Integer.parseInt(dateArray[1]);
+		int month = Integer.parseInt(dateArray[0]);
+		int year = Integer.parseInt(dateArray[2]);
+	    
+		//Sakamoto Algorithm for finding day og week
+		int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
+	    year -= (month < 3)?1:0;
+	    int n = (year + year/4 - year/100 + year/400 + t[month-1] + date) % 7;
+	    
+	    switch(n){
+	    case 0:
+	    	day = "Sunday";
+	    	break;
+	    case 1:
+	    	day = "Monday";
+	    	break;
+	    case 2:
+	    	day = "Tuesday";
+	    	break;
+	    case 3:
+	    	day = "Wednesday";
+	    	break;
+	    case 4:
+	    	day = "Thursday";
+	    	break;
+	    case 5:
+	    	day = "Friday";
+	    	break;
+	    case 6:
+	    	day = "Saturday";
+	    	break;
+	    }
+		return day;
+	}
+	
+	//22. HashMapToArrayList
+	public static ArrayList<String> getName(HashMap<Integer,String> map){
+		
+		String pattern = "^[a-z]((([a-zA-Z]*)([0-9]+)([a-zA-Z]*))+)[A-Z]$";
+				
+		ArrayList<String> nameList = new ArrayList<>();
+		
+		Iterator iter = map.entrySet().iterator();
+	    while (iter.hasNext()) {
+	        Map.Entry pair = (Map.Entry)iter.next();
+	        String value = (String)pair.getValue();
+	        if(Pattern.matches(pattern, value)){
+	        	nameList.add(value);
+	        }
+	    }
+	    return nameList;
+	}
+	
+	//23. DateFormatConversion
+	public static String convertDateFormat(String dateFormatOne){
+		String array[] = dateFormatOne.split("/");
+		
+		String dateFormatTwo = array[0] + "-" + array[1] + "-" + array[2];
+		
+		return dateFormatTwo;
+	}
+	
+	//24. StringProcessing
+	public static int getLastDayOfMonth(String date){
+		String array[] = date.split("-");
+		
+		int month = Integer.parseInt(array[1]);
+		int year = Integer.parseInt(array[2]);
+		int numberOfDays = 0;
+		switch(month){
+		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+			numberOfDays = 31;
+			break;
+		case 4: case 6: case 9: case 11:
+			numberOfDays = 30;
+			break;
+		case 2:
+			if(year%4 == 0)
+				numberOfDays = 29;
+			else 
+				numberOfDays = 28;
+			break;
+		}
+		return numberOfDays;
+	}
+	
+	//25. AgeForVoting
+	public static String getAge(String dob){
+		int currentYear = 2014;
+		String array[] = dob.split("/");
+		int birthYear = Integer.parseInt(array[2]);
+		
+		if((currentYear-birthYear)>=18)
+			return "Eligible";
+		else 
+			return "Not Eligible";
 	}
 }

@@ -8,15 +8,6 @@ import java.util.Scanner;
  * @author pandrew
  *
  */
-class UserMainCodeTwentyThree {
-	public static String convertDateFormat(String dateFormatOne){
-		String array[] = dateFormatOne.split("/");
-		
-		String dateFormatTwo = array[0] + "-" + array[1] + "-" + array[2];
-		
-		return dateFormatTwo;
-	}
-}
 public class DateFormatConversion {
 
 	/**
@@ -28,7 +19,7 @@ public class DateFormatConversion {
 		System.out.println("Enter date in format dd/mm/yyyy");
 		String dateFormatOne = sc.nextLine();
 		
-		String dateFormatTwo = UserMainCodeTwentyThree.convertDateFormat(dateFormatOne);
+		String dateFormatTwo = UserMainCode.convertDateFormat(dateFormatOne);
 		
 		System.out.println(dateFormatTwo);
 
